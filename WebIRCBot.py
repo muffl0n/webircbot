@@ -1,29 +1,4 @@
-#! /usr/bin/env python
-#
-# Example program using ircbot.py.
-#
-# Joel Rosdahl <joel@rosdahl.net>
-
-"""A simple example bot.
-
-This is an example bot that uses the SingleServerIRCBot class from
-ircbot.py.  The bot enters a channel and listens for commands in
-private messages and channel traffic.  Commands in channel messages
-are given by prefixing the text by the bot name followed by a colon.
-It also responds to DCC CHAT invitations and echos data sent in such
-sessions.
-
-The known commands are:
-
-    stats -- Prints some channel information.
-
-    disconnect -- Disconnect the bot.  The bot will try to reconnect
-                  after 60 seconds.
-
-    die -- Let the bot cease to exist.
-
-    dcc -- Let the bot invite you to a DCC CHAT connection.
-"""
+# Based on example program by Joel Rosdahl <joel@rosdahl.net>
 
 from ircbot import SingleServerIRCBot
 from irclib import nm_to_n, nm_to_h, irc_lower, ip_numstr_to_quad, ip_quad_to_numstr
