@@ -2,7 +2,7 @@ from __future__ import with_statement
 
 from functools import wraps
 from flask import Flask, render_template, redirect, url_for, request, flash, session
-from WebIRCBotThread import *
+from webircbotthread import *
 
 import logging, logging.config
 import os

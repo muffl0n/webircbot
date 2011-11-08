@@ -1,5 +1,5 @@
 import threading
-from WebIRCBot import *
+from webircbot import *
 
 class WebIRCBotThread(threading.Thread):	
 	def __init__(self, channel, nickname, server, port):
