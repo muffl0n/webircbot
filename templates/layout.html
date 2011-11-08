@@ -1,0 +1,56 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+<div style="text-align: center">
+	<a href="{{ url_for('index') }}">index</a>
+	|
+	<a href="{{ url_for('logout') }}">logout</a>
+</div>
+
+<div class="messagebox">
+	Logged in as
+	<ul>
+		<li>{{ session.login }}</li>
+	</ul>
+</div>
+<div class="messagebox">
+	Status
+	<ul>
+		{% if bot_thread != None %}
+			<li>running -> <a href="{{ url_for('stop') }}">stop</a></li>
+			<li>connected as '{{ bot_thread.bot.connection.nickname }}' to '{{ bot_thread.bot.connection.server }}:{{ bot_thread.bot.connection.port }}'</a></li>
+		{% else %}
+			<li class="error">not running -> <a href="{{ url_for('start') }}">start</a></li>
+		{% endif %}
+	</ul>
+</div>
+<br>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+	<div class="messagebox">
+	Messages
+	{% if messages -%}
+		<ul>
+		{% for category, message in messages %}
+			<li class="{{ category }}">{{ message }}</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<ul>
+			<li>No Messages</li>
+		</ul>
+	{% endif %}
+	</div>
+{% endwith %}
+
+
+
+{% block body %}{% endblock %}
+
+{% include 'logfile.html' %}
+
+</body>
+</html>

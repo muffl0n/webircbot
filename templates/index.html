@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<p>Channels:
+
+<ul>
+{% for channel in channels -%}
+	<li>
+		<form method="post" action="{{ url_for('privmsg') }}">
+		<input type="hidden" name="target" value="{{ channel }}">
+		{{ channel }}: 
+		<input type="text" name="msg">
+		<input type="submit">
+		</form>
+		<a href="{{ url_for('part', channel=channel) }}">part</a>
+	</li>
+{% endfor %}
+</ul>
+Join channel:
+<form method="post" action="{{ url_for('join') }}">
+	channel: <input type="text" name="channel">
+	<br>
+	key: <input type="text" name="key">
+	<input type="submit">
+</form>
+</p>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+<!-- logfile.html -->
+<div class="logfile">
+	Last 20 lines of logfile
+	{% with lines = get_log_file_contents() %}
+		<ul>
+		{% for line in lines -%}
+			<li>{{ line.strip()}}</li>
+		{% endfor %}
+		</ul>
+	{% endwith %}
+</div>
+<!-- /logfile.html -->

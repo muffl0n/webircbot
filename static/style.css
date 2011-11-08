@@ -1,0 +1,38 @@
+div.messagebox {
+	background: lightgray;
+	width: 600px;
+	margin: auto;
+}
+
+div.messagebox ul {
+	margin: 0px;
+	list-style-position: inside;
+	padding-left: 0px;
+}
+
+div.messagebox ul li {
+	background: lightgreen;
+}
+
+div.messagebox ul li.error {
+	background: red;
+}
+
+div.login {
+	border: 1px solid black;
+	width: 400px;
+	margin-left: auto ;
+	margin-right: auto ;
+	margin-top: 300px;
+	text-align: center;
+}
+
+div.logfile {
+	background: lightgray;
+}
+
+div.logfile ul {
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style: none;
+}
