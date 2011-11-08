@@ -14,17 +14,6 @@ class WebIRCBot(SingleServerIRCBot):
 	def on_welcome(self, c, e):
 		c.join(self.channel)
 
-	def on_privmsg(self, c, e):
-		#self.do_command(e, e.arguments()[0])
-		pass
-
-	def on_pubmsg(self, c, e):
-		#a = e.arguments()[0].split(":", 1)
-		#if len(a) > 1 and irc_lower(a[0]) == irc_lower(self.connection.get_nickname()):
-		#    self.do_command(e, a[1].strip())
-		#return
-		pass
-
 	def quit(self):
 		self.connection.quit("Using irclib.py")
 		self.connection.disconnect("Using irclib.py")
