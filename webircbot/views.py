@@ -1,39 +1,6 @@
-from __future__ import with_statement
-
-from functools import wraps
 from flask import Flask, render_template, redirect, url_for, request, flash, session
-from webircbot import app
-
-import logging, logging.config
-import os
-import ConfigParser
-
-bot_thread = None
-
-logging.config.fileConfig('webircbot/conf/logging.conf')
-log = logging.getLogger(os.path.basename(__file__))
-
-config = ConfigParser.RawConfigParser()
-config.read('webircbot/conf/bot.conf')
-
-def get_log_file_contents(): 
-	lines = []
-	with open("webIRCBot.log") as f:
-		for line in f:
-			lines.append(line)
-	del lines[0:len(lines)-20]
-	return lines
-	
-app.jinja_env.globals.update(get_log_file_contents=get_log_file_contents)
-
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if 'login' not in session:
-            return redirect(url_for('login'))
-        return f(*args, **kwargs)
-    return decorated_function
-
+from webircbot import app, log, config, login_required, bot_thread
+from webircbot.bot.webircbotthread import *
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
