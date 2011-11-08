@@ -83,7 +83,7 @@ def join():
 @login_required
 def part():
 	global bot_thread
-	channel = request.args.get('channel', '')
+	channel = request.args.get('channel', '').encode("utf-8")
 	bot_thread.bot.part(channel)
 	flash("Parted channel '%s'" % (channel))
 	app.logger.info("Parted channel '%s'" % (channel))

@@ -28,5 +28,4 @@ class WebIRCBot(SingleServerIRCBot):
 			self.connection.join(channel)
 
 	def part(self, channel):
-		channel = channel.encode("utf-8")
 		self.connection.part(channel)
