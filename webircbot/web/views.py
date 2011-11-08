@@ -2,22 +2,19 @@ from __future__ import with_statement
 
 from functools import wraps
 from flask import Flask, render_template, redirect, url_for, request, flash, session
-from webircbotthread import *
+from webircbot import app
 
 import logging, logging.config
 import os
 import ConfigParser
 
-app = Flask(__name__)
-app.secret_key = '\x1bf\xa2\xf5\x81u;\xfa\xc8\x88?\xc7\x91\x99\x15k\xb4\xc5|Am\xe7\x9f1'
-
 bot_thread = None
 
-logging.config.fileConfig('conf/logging.conf')
+logging.config.fileConfig('webircbot/conf/logging.conf')
 log = logging.getLogger(os.path.basename(__file__))
 
 config = ConfigParser.RawConfigParser()
-config.read('conf/bot.conf')
+config.read('webircbot/conf/bot.conf')
 
 def get_log_file_contents(): 
 	lines = []
@@ -124,6 +121,3 @@ def part():
 	flash("Parted channel '%s'" % (channel))
 	app.logger.info("Parted channel '%s'" % (channel))
 	return redirect(url_for('index'))
-
-if __name__ == '__main__':
-	app.run(debug=True)
